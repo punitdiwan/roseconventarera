@@ -249,7 +249,7 @@ const Footer = ({header_data}) => {
             className="flex flex-row justify-center text-center text-white no-underline"
             href="http://maitretech.com/"
           >
-            Designed with
+            Designed With
             <svg
               className="w-[25px] h-[25px] text-red-700 svg-inline--fa fa-heart fa-w-18 pl-1 pr-1 "
               aria-hidden="true"
