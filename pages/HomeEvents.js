@@ -13,6 +13,7 @@ const HomeEvents = () => {
     const [data1, setdata1] = useState("")
     const get_base_url = base_url.use()
     const get_school_name = school_name.use()
+    const [error, setError] = useState(null);
 
     const slides = [
         { title: "/images/is3.jpg ", description: 'Name-1' },
@@ -33,31 +34,27 @@ const HomeEvents = () => {
     useEffect(() => {
         axios.get(`${get_base_url}/${get_school_name}/items/toppers?fields=*,photo.*`)
             .then((response) => {
-
                 if (response?.data?.data?.length > 0) {
                     setdata(response)
                 }
             })
             .catch((error) => {
-                console.log(error);
-            })
-
+            });
 
         axios.get(`${get_base_url}/${get_school_name}/items/events`)
             .then((response) => {
-
                 if (response?.data?.data?.length > 0) {
                     setdata1(response)
-
                 }
-
             })
             .catch((error) => {
-                console.log(error);
-            })
-
+                setError(error);
+            });
     }, [])
 
+    if (error) {
+        throw error;
+    }
 
 
     return (
