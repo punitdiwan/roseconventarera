@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Layout from "../Component/Layout";
-import { SRLWrapper } from "simple-react-lightbox";
+
 
 const OurTeam = ({ data_header }) => {
 
   const slides = [
-    { title: "  ", Name: 'Mrs.Poonam Shrivastava' , Position: '( Vice Principal )' },
+    { title: "", Name: 'Mrs.Poonam Shrivastava' , Position: '( Vice Principal )' },
     { title: " ", Name: 'Mrs. Jaya Bharti Rajput' , Position:' ( Office Incharge )' },
     { title: "", Name: 'Mrs. Preeti Fulzele' , Position: '( Accountant )' },
     { title: "", Name: 'Mrs. Sunita Mishra' , Position: '( Social Science Teacher )' },
@@ -19,7 +19,6 @@ const OurTeam = ({ data_header }) => {
   return (
     <Layout header_data={data_header}>
 
-      <SRLWrapper>
         <div className="container-fluid  bg-no-repeat bg-cover pt-10  ">
           <div className="p-5 md:grid md:grid-cols-4 sm:grid sm:grid-cols-2">
             {
@@ -39,7 +38,7 @@ const OurTeam = ({ data_header }) => {
               })}
           </div>
         </div>
-      </SRLWrapper>
+  
       
       {/* <div className="mx-5 ">
         <div className="grid grid-rows-1 mt-5 shadow md:grid md:grid-cols-4 gap-7" >
