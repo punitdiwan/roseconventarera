@@ -1,7 +1,9 @@
-
+import dynamic from 'next/dynamic';
 import React, { useState, useEffect } from 'react';
 import 'react-calendar/dist/Calendar.css';
-import Calendar from 'react-calendar';
+const Calendar = dynamic(() => import('react-calendar'), {
+  ssr: false, // disables server-side rendering for this component
+});
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import axios from 'axios';
@@ -109,7 +111,7 @@ const HomeEvents = () => {
                             return <div className="carousel-inner" role="listbox" key={index} >
                                 <div className='carousel ' role="listbox" style={{ marginTop: "15px" }}>
                                     <img
-                                        src={item?.photo?.data?.full_url}
+                                        src={item?.photo?.data?.full_url?.replace('http://', 'https://')}
                                         style={{ height: "250px", width: "100%", border: "1px solid #ccc" }}
                                         alt="sorry_no_img"
                                     />
