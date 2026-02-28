@@ -1,7 +1,7 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import React from "react";
-import { IoIosArrowForward ,IoIosArrowBack} from "react-icons/io";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 const Slider = ({ slider_data }) => {
 
   const slides = [
@@ -20,7 +20,7 @@ const Slider = ({ slider_data }) => {
         interval={3000}
         showStatus={false}
         className="mt-14"
-        
+
         renderArrowPrev={(onClickHandler, hasPrev, label) =>
           hasPrev && (
             <button
@@ -29,7 +29,7 @@ const Slider = ({ slider_data }) => {
               title={label}
               className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 text-white p-3 rounded-full hover:bg-white hover:text-black transition"
             >
-              <IoIosArrowBack size={26}/>
+              <IoIosArrowBack size={26} />
             </button>
           )
         }
@@ -42,30 +42,30 @@ const Slider = ({ slider_data }) => {
               title={label}
               className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 text-white p-3 rounded-full hover:bg-white hover:text-black transition"
             >
-              <IoIosArrowForward size={26}/>
+              <IoIosArrowForward size={26} />
             </button>
           )
         }
       >
         {sortedSlides.length > 0
           ? sortedSlides.map((item, index) => (
-              <div key={index}>
-                <img
-                  src={item?.image?.data?.full_url?.replace("http://", "https://")}
-                  className="w-full md:h-[400px] lg:h-[500px] h-[230px] object-cover"
-                  alt="slider_img"
-                />
-              </div>
-            ))
+            <div key={index}>
+              <img
+                src={item?.image?.data?.full_url?.replace("http://", "https://")}
+                className="relative w-full h-[300px] md:h-[500px] lg:h-[640p"
+                alt="slider_img"
+              />
+            </div>
+          ))
           : slides.map((slide, index) => (
-              <div key={index}>
-                <img
-                  src={slide.title}
-                  alt="slider_img"
-                  className="w-full md:h-[400px] lg:h-[500px] h-[230px] object-cover"
-                />
-              </div>
-            ))}
+            <div key={index}>
+              <img
+                src={slide.title}
+                alt="slider_img"
+                className="relative w-full h-[300px] md:h-[500px] lg:h-[640p"
+              />
+            </div>
+          ))}
       </Carousel>
     </div>
   );
