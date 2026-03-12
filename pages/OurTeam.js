@@ -114,6 +114,6 @@ export async function getStaticProps(context) {
   }
   return {
     props: { data_header },
-    revalidate: 2,  
+    revalidate: 86400, // 1 day  
   }
 }

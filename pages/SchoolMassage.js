@@ -1,43 +1,20 @@
 import Link from "next/link" 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { base_url, school_name } from '../SimpleState/auth'
-import axios from 'axios';
 
 
-const SchoolMassage = ({ header_data }) => {
+const SchoolMassage = ({ header_data, tabs_data }) => {
 
-  const [data, setdata] = useState("")
-  const get_base_url = base_url.use()
-  const get_school_name = school_name.use()
- 
+  const fallbackBody = `We believe that every child is Unique and has a different learning
+  approach. We, at Rose Mary, observe the talents and qualities and
+  focus on them for educating the child. We facilitate the students to
+  become spiritually deep rooted, morally upright & emotionally mature.
+  We equip students with a sound value system to live as good human
+  beings & impart substantial knowledge and skill to achieve excellence
+  in diverse fields.`;
 
-  useEffect(() => {
-    axios.get(`${get_base_url}/${get_school_name}/items/tabs?fields=title,heading,body,images.directus_files_id.data.full_url`)
-      .then((response) => {
- 
+  const data = tabs_data?.data?.[0] || {};
 
-        if (response?.data?.data?.length > 0) {
-            console.log(response.data);
-            setdata(response.data.data[0]) 
-            // response?.data?.data[0].map((data1,i)=>{
-            //     setdata(data1) 
-            //     console.log(data1);
-            // })
-        //   setdata(response) 
-        }
-         
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-
-
-  }, []) 
-
-
-  
-
-  
   return (
     <div>
       <div
@@ -47,19 +24,12 @@ text-base px-10 md:px-16 py-10 text-gray-600 bg-[#cbdcf8]"
         <div className="w-5/5  justify-center mb-5 flex align-middle md:w-6/12 ">
 
           <img className=" h-[150px] md:h-[200px] lg:h-[250px]" src={header_data?.data ? header_data?.data[0]?.logo?.data?.full_url?.replace('http://', 'https://') : "https://rosemarydn.com/images/logo.png"}
-          //  src="https://rosemarydn.com/images/school.PNG"
           />
         </div>
         <div className="w-5/5 md:w-6/12 ">
           <span className="text-4xl">{data?.heading||"School Message"}</span>
           <p className="mt-5"> 
-          {data?.body||`We believe that every child is Unique and has a different learning
-          approach. We, at Rose Mary, observe the talents and qualities and
-          focus on them for educating the child. We facilitate the students to
-          become spiritually deep rooted, morally upright & emotionally mature.
-          We equip students with a sound value system to live as good human
-          beings & impart substantial knowledge and skill to achieve excellence
-          in diverse fields.`}
+          {data?.body||fallbackBody}
           </p>
         </div>
       </div>
@@ -90,3 +60,29 @@ text-base px-10 md:px-16 py-10 text-gray-600 bg-[#cbdcf8]"
 }
 
 export default SchoolMassage
+
+export async function getStaticProps(context) {
+  let data_header
+  let tabs_data
+
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_SCHOOL}/items/config?fields=*,logo.data.full_url`)
+    data_header = await response.json()
+  }
+  catch (error) {
+    data_header = false
+  }
+
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_SCHOOL}/items/tabs?fields=title,heading,body,images.directus_files_id.data.full_url`)
+    tabs_data = await response.json()
+  }
+  catch (error) {
+    tabs_data = false
+  }
+
+  return {
+    props: { header_data: data_header, tabs_data },
+    revalidate: 86400,
+  }
+}
