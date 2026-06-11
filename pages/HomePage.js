@@ -12,7 +12,7 @@ const HomePage = () => {
           className="flex flex-col md:flex-row w-full justify-center font-normal leading-7 
          text-base px-5 md:px-16 pt-10 text-gray-600 bg-[#cbdcf8]"
         >
-          <div className="w-4/5 md:w-6/12 ">
+          <div className="w-4/5 md:w-5/12 ">
             <img src="https://rosemarydn.com/images/school.PNG"></img>
           </div>
           <div className="w-5/5 md:w-6/12 ">

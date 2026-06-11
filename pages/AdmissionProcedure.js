@@ -5,8 +5,8 @@ const AdmissionProcedure = ({ data_header }) => {
 
       return (
             <Layout header_data={data_header}>
-                  <div className="w-full h-full bg-no-repeat bg-cover bg-Admission container-fluid mt-10">
-                        
+                  <div className="w-full h-full bg-no-repeat bg-cover bg-Admission container-fluid mt-10 ">
+                         
                         <h5 className="text-2xl font-medium text-center leading-2 pt-5 ">Rose Mary Hr. Sec. School:</h5>
                         <div className="  mt-3 ml-5 mr-2 px-4 md:px-28 ">
                               <b className="text-xl font-bold leading-2">Registration</b>
@@ -103,6 +103,6 @@ export async function getStaticProps(context) {
       }
       return {
             props: { data_header },
-            revalidate: 86400, // 1 day
+            revalidate: 86400, // 24 hours - reduces serverless invocations on Vercel Pro
       }
 }
