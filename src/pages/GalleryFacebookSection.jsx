@@ -96,7 +96,7 @@ const GalleryFacebookSection = ({ header_data }) => {
             </div>
 
             <a
-              href="https://www.instagram.com/reel/DXn5G3GiJ8t/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+              href="https://www.instagram.com/rose_convent_school?evlk=MWQxNG1pNTNheWxzaQ=="
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#385a91] text-white px-8 py-3 rounded-md font-bold shadow-md hover:bg-[#1b3359] transition-all duration-300 text-xs tracking-widest uppercase text-center w-full max-w-[220px]"
@@ -129,7 +129,7 @@ const GalleryFacebookSection = ({ header_data }) => {
             </div>
 
             <a
-              href={schoolData?.facebook || "https://www.facebook.com/share/1ZRw2qyYfL/"}
+              href={ "https://www.facebook.com/share/1C7EoqA8ot/"}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#385a91] text-white px-8 py-3 rounded-md font-bold shadow-md hover:bg-[#1b3359] transition-all duration-300 text-xs tracking-widest uppercase text-center w-full max-w-[220px]"
